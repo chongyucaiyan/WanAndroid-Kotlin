@@ -43,4 +43,8 @@ ext {
     // Android test
     runnerVersion = '1.0.2'
     espressoVersion = '3.0.2'
+
+    // App
+    leakCanaryVersion = '1.6.3'
+    loggerVersion = '2.2.0'
 }
