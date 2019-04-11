@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">WanAndroid</string>
+
+    <!--加载-->
+    <string name="loading">加载中&#8230;</string>
+    <string name="load_error">加载出错</string>
+    <string name="no_network">没有网络，点击重试</string>
+    <string name="no_data">没有数据</string>
+
+    <!--错误-->
+    <string name="error_unknown">未知错误</string>
+    <string name="error_http">HTTP错误</string>
+    <string name="error_network">当前网络不可用，请检查您的网络连接</string>
+    <string name="error_parse">解析错误</string>
+    <string name="error_ssl">SSL错误</string>
+
+    <!--主页-->
+    <string name="homepage">首页</string>
+    <string name="project">项目</string>
+    <string name="system">体系</string>
+    <string name="navigation">导航</string>
+    <string name="we_chat">公众号</string>
+
+    <!--导航-->
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+
+    <string name="top">置顶</string>
+    <string name="fresh">新</string>
+    <string name="chapter_name_format">%1$s / %2$s</string>
+    <string name="exit_tips">再按一次退出程序</string>
+
 </resources>
