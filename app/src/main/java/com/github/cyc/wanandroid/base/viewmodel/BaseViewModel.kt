@@ -20,11 +20,9 @@ abstract class BaseViewModel : BaseObservable(), DefaultLifecycleObserver {
     val loadState = ObservableField<LoadState>()
 
     // 因为设置相同的值也要通知改变，所以采用@Bindable的方式
-    @Bindable
-    private var refreshState: RefreshState = RefreshState.REFRESH_END
+    private var refreshState: RefreshState? = null
 
-    @Bindable
-    private var hasMore: Boolean = false
+    private var hasMore: Boolean? = null
 
     private var mCompositeDisposable: CompositeDisposable? = null
 
@@ -43,6 +41,7 @@ abstract class BaseViewModel : BaseObservable(), DefaultLifecycleObserver {
      *
      * @return 刷新状态
      */
+    @Bindable
     fun getRefreshState() = refreshState
 
     /**
@@ -60,6 +59,7 @@ abstract class BaseViewModel : BaseObservable(), DefaultLifecycleObserver {
      *
      * @return true表示还有更多，false表示没有更多了
      */
+    @Bindable
     fun getHasMore() = hasMore
 
     /**
