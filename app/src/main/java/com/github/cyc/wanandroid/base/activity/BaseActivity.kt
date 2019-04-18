@@ -101,6 +101,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : AppCompa
                 if (mViewNoNetworkBinding == null) {
                     mViewNoNetworkBinding = DataBindingUtil.inflate(layoutInflater, R.layout.view_no_network,
                             mActivityBaseBinding.flContentContainer, false)
+                    mViewNoNetworkBinding?.viewModel = mViewModel
                 }
                 mActivityBaseBinding.flContentContainer.addView(mViewNoNetworkBinding?.root)
             }

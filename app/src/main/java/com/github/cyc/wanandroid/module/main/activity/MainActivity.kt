@@ -11,6 +11,7 @@ import com.github.cyc.wanandroid.app.Constant
 import com.github.cyc.wanandroid.app.ScrollToTop
 import com.github.cyc.wanandroid.base.activity.BaseActivity
 import com.github.cyc.wanandroid.databinding.ActivityMainBinding
+import com.github.cyc.wanandroid.module.details.activity.DetailsActivity
 import com.github.cyc.wanandroid.module.main.fragment.*
 import com.github.cyc.wanandroid.module.main.viewmodel.MainViewModel
 import com.github.cyc.wanandroid.utils.ToastUtils
@@ -46,8 +47,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun initToolbar() {
         setSupportActionBar(mDataBinding.iToolbar.tbToolbar)
-        val actionBar = supportActionBar
-        actionBar?.run {
+        supportActionBar?.run {
             setHomeAsUpIndicator(R.drawable.ic_menu)
             setDisplayHomeAsUpEnabled(true)
             setTitle(R.string.app_name)
@@ -102,6 +102,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 }
 
                 R.id.nav_about -> {
+                    DetailsActivity.start(this, Constant.ABOUT_URL)
                     mDataBinding.dlDrawer.closeDrawers()
                     true
                 }
@@ -120,17 +121,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                // Open the navigation drawer when the home icon is selected from the toolbar.
-                mDataBinding.dlDrawer.openDrawer(GravityCompat.START)
-                true
-            }
+    override fun onOptionsItemSelected(item: MenuItem) =
+            when (item.itemId) {
+                android.R.id.home -> {
+                    // Open the navigation drawer when the home icon is selected from the toolbar.
+                    mDataBinding.dlDrawer.openDrawer(GravityCompat.START)
+                    true
+                }
 
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+                else -> super.onOptionsItemSelected(item)
+            }
 
     private fun getFragment(index: Int): Fragment {
         var fragment = mFragmentMap.get(index)

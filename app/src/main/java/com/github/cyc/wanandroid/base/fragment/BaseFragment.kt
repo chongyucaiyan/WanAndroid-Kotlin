@@ -109,6 +109,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
                 if (mViewNoNetworkBinding == null) {
                     mViewNoNetworkBinding = DataBindingUtil.inflate(layoutInflater, R.layout.view_no_network,
                             mFragmentBaseBinding.flContentContainer, false)
+                    mViewNoNetworkBinding?.viewModel = mViewModel
                 }
                 mFragmentBaseBinding.flContentContainer.addView(mViewNoNetworkBinding?.root)
             }

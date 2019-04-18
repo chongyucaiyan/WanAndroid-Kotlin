@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.cjj.MaterialRefreshLayout
 import com.github.cyc.wanandroid.enums.RefreshState
+import com.github.cyc.wanandroid.module.main.model.BannerData
+import com.github.cyc.wanandroid.utils.Utils
+import com.youth.banner.Banner
 import q.rorbin.verticaltablayout.VerticalTabLayout
 
 /**
@@ -67,6 +70,34 @@ object WanBindingAdapter {
     @BindingAdapter("app:hasMore")
     fun setHasMore(refreshLayout: MaterialRefreshLayout, hasMore: Boolean?) {
         hasMore?.run { refreshLayout.setLoadMore(hasMore) }
+    }
+
+    /**
+     * 设置Banner的数据
+     *
+     * @param banner     Banner
+     * @param bannerData Banner数据
+     */
+    @JvmStatic
+    @BindingAdapter("app:bannerData")
+    fun setBannerData(banner: Banner, bannerData: BannerData?) {
+        if (bannerData == null || Utils.isListEmpty(bannerData.bannerList)) {
+            return
+        }
+
+        val imageUrlList = mutableListOf<String>()
+        val titleList = mutableListOf<String>()
+
+        for (data in bannerData.bannerList) {
+            imageUrlList.add(data.imagePath)
+            titleList.add(data.title)
+        }
+
+        banner.run {
+            setImages(imageUrlList)
+            setBannerTitles(titleList)
+            start()
+        }
     }
 
     /**
