@@ -5,12 +5,18 @@ import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.cjj.MaterialRefreshLayout
+import com.github.cyc.wanandroid.R
 import com.github.cyc.wanandroid.base.adapter.BasePagerAdapter
+import com.github.cyc.wanandroid.base.adapter.BaseTagAdapter
 import com.github.cyc.wanandroid.enums.RefreshState
 import com.github.cyc.wanandroid.module.main.model.BannerData
+import com.github.cyc.wanandroid.utils.ResourceUtils
 import com.github.cyc.wanandroid.utils.Utils
 import com.youth.banner.Banner
+import com.zhy.view.flowlayout.TagFlowLayout
 import q.rorbin.verticaltablayout.VerticalTabLayout
+import q.rorbin.verticaltablayout.adapter.SimpleTabAdapter
+import q.rorbin.verticaltablayout.widget.ITabView
 
 /**
  * 应用的BindingAdapter
@@ -29,6 +35,22 @@ object WanBindingAdapter {
     fun setDataList(viewPager: ViewPager, dataList: List<Nothing>) {
         val adapter = viewPager.adapter
         if (adapter is BasePagerAdapter<*>) {
+            adapter.setDataList(dataList)
+        }
+    }
+
+    /**
+     * 设置TagFlowLayout的数据列表
+     *
+     * @param tagFlowLayout TagFlowLayout
+     * @param dataList      数据列表
+     * @param <T>           数据类型
+     */
+    @JvmStatic
+    @BindingAdapter("app:dataList")
+    fun setDataList(tagFlowLayout: TagFlowLayout, dataList: List<Nothing>) {
+        val adapter = tagFlowLayout.adapter
+        if (adapter is BaseTagAdapter<*>) {
             adapter.setDataList(dataList)
         }
     }
@@ -113,6 +135,21 @@ object WanBindingAdapter {
     @JvmStatic
     @BindingAdapter("app:titleList")
     fun setTitleList(tabLayout: VerticalTabLayout, titleList: List<String>) {
+        if (Utils.isListEmpty(titleList)) {
+            return
+        }
 
+        tabLayout.setTabAdapter(object : SimpleTabAdapter() {
+
+            override fun getCount() = titleList.size
+
+            override fun getTitle(position: Int) =
+                    ITabView.TabTitle.Builder()
+                            .setContent(titleList[position])
+                            .setTextColor(ResourceUtils.getColor(R.color.primary_text),
+                                    ResourceUtils.getColor(R.color.secondary_text))
+                            .setTextSize(16)
+                            .build()
+        })
     }
 }

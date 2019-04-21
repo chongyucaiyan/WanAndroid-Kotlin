@@ -27,6 +27,9 @@ class DataManager private constructor(private val mHttpDataSource: HttpDataSourc
     override fun getWeChatArticleListData(id: Int, pageNum: Int): Observable<Response<ArticleList>> =
             mHttpDataSource.getWeChatArticleListData(id, pageNum)
 
+    override fun getNavigationListData(): Observable<Response<List<Navigation>>> =
+            mHttpDataSource.getNavigationListData()
+
     companion object {
 
         @Volatile

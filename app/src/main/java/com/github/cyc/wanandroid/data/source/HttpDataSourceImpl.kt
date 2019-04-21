@@ -27,6 +27,9 @@ class HttpDataSourceImpl private constructor(private val mApiService: ApiService
     override fun getWeChatArticleListData(id: Int, pageNum: Int): Observable<Response<ArticleList>> =
             mApiService.getWeChatArticleListData(id, pageNum)
 
+    override fun getNavigationListData(): Observable<Response<List<Navigation>>> =
+            mApiService.getNavigationListData()
+
     companion object {
 
         @Volatile
