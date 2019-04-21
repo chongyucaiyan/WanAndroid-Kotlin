@@ -30,6 +30,12 @@ class HttpDataSourceImpl private constructor(private val mApiService: ApiService
     override fun getNavigationListData(): Observable<Response<List<Navigation>>> =
             mApiService.getNavigationListData()
 
+    override fun getProjectListData(): Observable<Response<List<Chapter>>> =
+            mApiService.getProjectListData()
+
+    override fun getProjectArticleListData(pageNum: Int, id: Int): Observable<Response<ArticleList>> =
+            mApiService.getProjectArticleListData(pageNum, id)
+
     companion object {
 
         @Volatile

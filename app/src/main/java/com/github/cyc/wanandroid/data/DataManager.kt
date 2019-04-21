@@ -30,6 +30,12 @@ class DataManager private constructor(private val mHttpDataSource: HttpDataSourc
     override fun getNavigationListData(): Observable<Response<List<Navigation>>> =
             mHttpDataSource.getNavigationListData()
 
+    override fun getProjectListData(): Observable<Response<List<Chapter>>> =
+            mHttpDataSource.getProjectListData()
+
+    override fun getProjectArticleListData(pageNum: Int, id: Int): Observable<Response<ArticleList>> =
+            mHttpDataSource.getProjectArticleListData(pageNum, id)
+
     companion object {
 
         @Volatile

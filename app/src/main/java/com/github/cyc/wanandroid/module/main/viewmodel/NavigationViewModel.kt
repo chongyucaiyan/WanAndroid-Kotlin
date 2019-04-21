@@ -22,7 +22,7 @@ class NavigationViewModel(private val mDataManager: DataManager) : BaseViewModel
         loadState.set(LoadState.LOADING)
         addDisposable(mDataManager.getNavigationListData()
                 .compose(RxUtils.applySchedulers())
-                .subscribeWith(object : BaseObserver<List<Navigation>>() {
+                .subscribeWith(object : BaseObserver<List<Navigation>>(loadState) {
 
                     override fun onNextX(t: List<Navigation>) {
                         if (!Utils.isListEmpty(t)) {

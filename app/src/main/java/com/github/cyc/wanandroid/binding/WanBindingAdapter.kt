@@ -4,8 +4,10 @@ import android.databinding.BindingAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.ImageView
 import com.cjj.MaterialRefreshLayout
 import com.github.cyc.wanandroid.R
+import com.github.cyc.wanandroid.app.GlideApp
 import com.github.cyc.wanandroid.base.adapter.BasePagerAdapter
 import com.github.cyc.wanandroid.base.adapter.BaseTagAdapter
 import com.github.cyc.wanandroid.enums.RefreshState
@@ -96,6 +98,22 @@ object WanBindingAdapter {
     @BindingAdapter("app:hasMore")
     fun setHasMore(refreshLayout: MaterialRefreshLayout, hasMore: Boolean?) {
         hasMore?.run { refreshLayout.setLoadMore(hasMore) }
+    }
+
+    /**
+     * 设置ImageView的图片URL
+     *
+     * @param imageView ImageView
+     * @param imageUrl  图片URL
+     */
+    @JvmStatic
+    @BindingAdapter("app:imageUrl")
+    fun setImageUrl(imageView: ImageView, imageUrl: String?) {
+        GlideApp.with(imageView)
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_timelapse)
+                .error(R.drawable.ic_error)
+                .into(imageView)
     }
 
     /**

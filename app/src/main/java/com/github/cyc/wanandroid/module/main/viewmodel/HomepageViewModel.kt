@@ -109,11 +109,7 @@ class HomepageViewModel(private val mDataManager: DataManager) : BaseViewModel()
 
                             mPageNum = 0
 
-                            if (articleList.curPage >= articleList.pageCount) {
-                                setHasMore(false)
-                            } else {
-                                setHasMore(true)
-                            }
+                            setHasMore(articleList.curPage < articleList.pageCount)
 
                             if (!mRefresh) {
                                 loadState.set(LoadState.SUCCESS)
