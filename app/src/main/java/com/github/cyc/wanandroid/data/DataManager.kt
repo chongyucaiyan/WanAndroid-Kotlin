@@ -21,6 +21,9 @@ class DataManager private constructor(private val mHttpDataSource: HttpDataSourc
     override fun getSystemListData(): Observable<Response<List<Chapter>>> =
             mHttpDataSource.getSystemListData()
 
+    override fun getWeChatListData(): Observable<Response<List<Chapter>>> =
+            mHttpDataSource.getWeChatListData()
+
     override fun getWeChatArticleListData(id: Int, pageNum: Int): Observable<Response<ArticleList>> =
             mHttpDataSource.getWeChatArticleListData(id, pageNum)
 

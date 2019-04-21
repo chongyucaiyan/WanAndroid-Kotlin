@@ -44,6 +44,14 @@ interface ApiService {
     fun getSystemListData(): Observable<Response<List<Chapter>>>
 
     /**
+     * 获取公众号列表数据
+     *
+     * @return 公众号列表数据
+     */
+    @GET("wxarticle/chapters/json")
+    fun getWeChatListData(): Observable<Response<List<Chapter>>>
+
+    /**
      * 获取某个公众号文章列表数据
      *
      * @param id      公众号ID

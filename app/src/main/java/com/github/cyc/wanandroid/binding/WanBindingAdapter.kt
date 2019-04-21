@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.cjj.MaterialRefreshLayout
+import com.github.cyc.wanandroid.base.adapter.BasePagerAdapter
 import com.github.cyc.wanandroid.enums.RefreshState
 import com.github.cyc.wanandroid.module.main.model.BannerData
 import com.github.cyc.wanandroid.utils.Utils
@@ -25,8 +26,11 @@ object WanBindingAdapter {
      */
     @JvmStatic
     @BindingAdapter("app:dataList")
-    fun <T> setDataList(viewPager: ViewPager, dataList: List<T>) {
-
+    fun setDataList(viewPager: ViewPager, dataList: List<Nothing>) {
+        val adapter = viewPager.adapter
+        if (adapter is BasePagerAdapter<*>) {
+            adapter.setDataList(dataList)
+        }
     }
 
     /**
