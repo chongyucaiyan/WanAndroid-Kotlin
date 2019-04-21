@@ -11,7 +11,8 @@ import com.github.cyc.wanandroid.utils.Utils
 /**
  * 文章的ViewModel
  */
-class ArticleViewModel(private val mDetailsNavigator: DetailsNavigator) : BaseItemViewModel<Article>() {
+class ArticleViewModel(private val mDetailsNavigator: DetailsNavigator)
+    : BaseItemViewModel<Article>() {
 
     val tag = ObservableField<String>()
 

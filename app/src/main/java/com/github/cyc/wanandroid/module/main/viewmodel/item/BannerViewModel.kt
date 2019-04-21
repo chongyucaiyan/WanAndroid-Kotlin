@@ -7,7 +7,8 @@ import com.github.cyc.wanandroid.navigator.DetailsNavigator
 /**
  * Banner的ViewModel
  */
-class BannerViewModel(private val mDetailsNavigator: DetailsNavigator) : BaseItemViewModel<BannerData>() {
+class BannerViewModel(private val mDetailsNavigator: DetailsNavigator)
+    : BaseItemViewModel<BannerData>() {
 
     override fun setAllModel(t: BannerData) {
 

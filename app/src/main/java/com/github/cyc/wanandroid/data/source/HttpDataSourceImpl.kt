@@ -1,10 +1,7 @@
 package com.github.cyc.wanandroid.data.source
 
 import com.github.cyc.wanandroid.http.api.ApiService
-import com.github.cyc.wanandroid.http.model.Article
-import com.github.cyc.wanandroid.http.model.ArticleList
-import com.github.cyc.wanandroid.http.model.Banner
-import com.github.cyc.wanandroid.http.model.Response
+import com.github.cyc.wanandroid.http.model.*
 import io.reactivex.Observable
 
 /**
@@ -20,6 +17,12 @@ class HttpDataSourceImpl private constructor(private val mApiService: ApiService
 
     override fun getArticleListData(pageNum: Int): Observable<Response<ArticleList>> =
             mApiService.getArticleListData(pageNum)
+
+    override fun getSystemListData(): Observable<Response<List<Chapter>>> =
+            mApiService.getSystemListData()
+
+    override fun getWeChatArticleListData(id: Int, pageNum: Int): Observable<Response<ArticleList>> =
+            mApiService.getWeChatArticleListData(id, pageNum)
 
     companion object {
 
