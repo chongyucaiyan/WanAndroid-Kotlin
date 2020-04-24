@@ -2,6 +2,7 @@ package com.github.cyc.wanandroid.module.main.activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.util.SparseArray
@@ -26,6 +27,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private var mLastIndex = -1
 
     private var mExitTime = 0L
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        overridePendingTransition(0, 0)
+    }
 
     override fun getLayoutResId() = R.layout.activity_main
 
